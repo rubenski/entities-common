@@ -1,5 +1,7 @@
-package nl.codebase.entities.common;
+package nl.codebase.entities.common.filter;
 
+
+import nl.codebase.entities.common.FaceterConstants;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
