@@ -16,7 +16,7 @@ import java.util.*;
  * Moves the JWT token from the incoming cookie to the header, so that Spring's BearerTokenExtractor will pick it up
  */
 @Slf4j
-public class TokenMoverFilter extends OncePerRequestFilter {
+public class TokenFromCookieToHeaderFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
