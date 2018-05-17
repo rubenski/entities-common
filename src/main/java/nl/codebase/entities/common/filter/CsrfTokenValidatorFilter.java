@@ -31,7 +31,6 @@ public class CsrfTokenValidatorFilter extends OncePerRequestFilter {
                     if(header != null && header.equals(cookieOptional.get().getValue())) {
                         log.debug("CSRF TOKEN OK");
                         csrfOk = true;
-                        filterChain.doFilter(request, response);
                     }
                 }
             }
