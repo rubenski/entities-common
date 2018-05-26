@@ -12,8 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Slf4j
-@ControllerAdvice
-@RestController
+
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
