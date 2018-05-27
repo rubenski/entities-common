@@ -17,6 +17,7 @@
     <properties>
         <postgres.driver.version>9.1-901.jdbc4</postgres.driver.version>
         <jjwt.version>0.9.0</jjwt.version>
+        <commons.codec.version>1.11</commons.codec.version>
     </properties>
 
     <build>
@@ -55,5 +56,11 @@
             <artifactId>postgresql</artifactId>
             <version>${postgres.driver.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons.codec.version}</version>
+        </dependency>
+
     </dependencies>
 </project>
