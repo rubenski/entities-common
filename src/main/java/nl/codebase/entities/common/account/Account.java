@@ -1,6 +1,7 @@
 package nl.codebase.entities.common.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
     protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
@@ -21,6 +23,9 @@ public class Account {
     private static final String NAME_PATTERN = "[\\w\\s-']{2,20}";
 
     protected Long id;
+
+    @JsonIgnore
+    private String salt;
 
     @NotNull
     @Pattern(regexp = NAME_PATTERN)
@@ -69,6 +74,16 @@ public class Account {
         } catch (IOException e) {
             throw new IllegalArgumentException("Could not deserialize Grants to JSON", e);
         }
+    }
+
+
+    // TODO: this is dangerous. Forget to call it and you may expose password hashes to the frontend. You must split
+    // up the form input backing object and the output object for accounts. There is also no need to add granted
+    // authorities again, because these are already in the token payload.
+    public void clearPasswords() {
+        password = null;
+        confirmPassword = null;
+        salt = null;
     }
 
 }
